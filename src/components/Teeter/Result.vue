@@ -8,7 +8,7 @@
         <div class="modal">
           <div class="layout-v layout-center">
             <h3>
-              You Lost The Game!
+              Hope you enjoyed!
             </h3>
             <button
               @click="resetGame"

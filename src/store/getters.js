@@ -3,10 +3,10 @@ const getters = {
     return leftItems.reduce((sum, current) => sum + current.weight, 0);
   },
   leftItemMomentum({ leftItems }) {
-    return leftItems.reduce((sum, current) => sum + current.momentum, 0);
+    return leftItems.reduce((sum, current) =>  current.momentum, 0);
   },
   rightItemMomentum({ rightItems }) {
-    return rightItems.reduce((sum, current) => sum + current.momentum, 0);
+    return rightItems.reduce((sum, current) => current.momentum, 0);
   },
   rightTotalSum({ rightItems }) {
     return rightItems.reduce((sum, current) => sum + current.weight, 0);
