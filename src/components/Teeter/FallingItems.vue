@@ -116,6 +116,7 @@ export default {
       if (e.keyCode !== 39 && e.keyCode !== 37) // OK
         return; // OK
 
+      // these will prevent to move item right
       const { left } = this.fallingItem; // OK
       const wrapperWidth = this.fallingWrapperEl.getBoundingClientRect().width; // OK
       const itemWidth = this.fallingItemEl.getBoundingClientRect().width; // OK
@@ -139,7 +140,5 @@ export default {
   height: 50vh;
   position: relative;
 }
-.falling-item {
-  z-index: 1;
-}
+
 </style>

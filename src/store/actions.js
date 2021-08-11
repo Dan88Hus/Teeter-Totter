@@ -21,6 +21,8 @@ const actions = {
     const left = randomNumberGenerator(range[0], range[1]);
     const shape = randomNumberGenerator(0, SHAPES.length - 1);
     const color = randomColorGenerator();
+    // momentum formula p=m*v
+    const momentum = (state.dropSpeed) * weight
     const id =
       state.fallingItems.length +
       state.leftItems.length +
@@ -29,6 +31,7 @@ const actions = {
     const item = {
       id,
       weight,
+      momentum,
       shape,
       left,
       color,

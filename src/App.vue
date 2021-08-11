@@ -1,16 +1,22 @@
 <template>
+<div>
+
+    <Header/>
   <div id="app">
     <Teter />
   </div>
+</div>
 </template>
 
 <script>
 import Teter from './components/Teeter'
+import Header from './components/Header'
 
 export default {
   name: 'App',
   components: {
-    Teter
+    Teter,
+    Header
   }
 }
 </script>

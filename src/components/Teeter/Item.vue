@@ -1,7 +1,7 @@
 <template>
-  <div :class="'layout-h layout-center-center item ' +  shape">
+  <div :class="'layout-h layout-center-center item ' + shape">
     <span class="weight">
-      {{item.weight + 'kg'}}
+      {{ item.weight + "kg" }}
     </span>
   </div>
 </template>
@@ -13,57 +13,56 @@ export default {
   props: {
     item: {
       type: Object,
-      required: true
+      required: true,
     },
     rightItem: {
       type: Boolean,
-      default: false
+      default: false,
     },
     onBoard: {
       type: Boolean,
-      default: true
-    }
+      default: true,
+    },
   },
   computed: {
-    shape () {
-      return SHAPES[this.item.shape]
-    }
+    shape() {
+      return SHAPES[this.item.shape];
+    },
   },
-  mounted () {
+  mounted() {
     this.setItemColor();
 
     this.updateItemPosition(this.item.left);
   },
   watch: {
-    'item.left' (newVal) {
+    "item.left"(newVal) {
       this.updateItemPosition(newVal);
-    }
+    },
   },
   methods: {
-    updateItemPosition (left) {
+    updateItemPosition(left) {
       const { width } = this.$el.getBoundingClientRect();
       const start = this.rightItem ? 50 : 0;
 
-      this.$el.style.left = (this.rightItem && left > 25)
-        ? `calc(${start + left}% - ${width}px)`
-        : `${start + left}%`;
+      this.$el.style.left =
+        this.rightItem && left > 25
+          ? `calc(${start + left}% - ${width}px)`
+          : `${start + left}%`;
     },
-    setItemColor () {
+    setItemColor() {
       const { color } = this.item;
 
-      if (this.shape === 'triangle') {
+      if (this.shape === "triangle") {
         this.$el.style.borderBottomColor = color;
-      }
-      else {
+      } else {
         this.$el.style.backgroundColor = color;
       }
       if (this.onBoard) {
-        this.$el.style.transform += 'translateY(-100%)';
+        this.$el.style.transform += "translateY(-100%)";
       }
-    }
+    },
   },
-
-}
+};
 </script>
 
 <style lang="scss" scoped>
@@ -80,10 +79,13 @@ export default {
   }
   &.rectangle {
     border-radius: 3px;
+    height: 50px !important;
+    width: 80px !important;
+  
   }
   &.rectangle,
   &.circle {
-    width: 60px;
+    width: 60px ;
     height: 60px;
   }
 

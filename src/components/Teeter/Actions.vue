@@ -1,8 +1,8 @@
 <template>
-  <div class="my-20">
+  <div>
     <button
       @click="toggleGameStatus"
-      class="btn primary"
+      class="btn btn-primary"
       :disabled="status === 'end'"
     >
       <span>{{ buttonLabel }}</span>
@@ -18,7 +18,7 @@ export default {
   computed: {
     ...mapState(['status']),
     buttonLabel () {
-      return this.status === 'pause' ? 'continue' : 'pause'
+      return this.status === 'pause' ? 'Continue' : 'Pause'
     }
   },
   methods: {

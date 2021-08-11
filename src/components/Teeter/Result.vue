@@ -12,9 +12,9 @@
             </h3>
             <button
               @click="resetGame"
-              class="btn primary"
+              class="btn btn-primary"
             >
-              <span>Reset</span>
+              <span>Re-Start</span>
             </button>
           </div>
         </div>

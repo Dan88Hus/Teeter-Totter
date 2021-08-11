@@ -19,7 +19,6 @@
     </div>
     <div class="pivot">
       <span class="angle">
-        {{Math.floor(sesawAngle) + '°'}}
       </span>
     </div>
   </div>
