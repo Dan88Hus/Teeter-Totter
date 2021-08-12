@@ -26,8 +26,6 @@ const getters = {
     );
   },
   sesawAngle(_, { leftItemSum, rightItemSum }) {
-    // if (rightSum - leftSum > 20 && leftSum > 0) return 31;
-
     return (rightItemSum - leftItemSum) / 30;
   },
 };

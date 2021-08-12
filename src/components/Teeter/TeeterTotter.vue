@@ -31,15 +31,18 @@ export default {
     };
   },
   mounted() {
+    
+
     // console.log("mounted");
     this.sesawEl = document.getElementById("seasaw");
     if (!this.sesawEl) {
       console.log("document Element is not loaded yet");
     } else {
       // console.log("sesawEl exist", this.sesawEl.getBoundingClientRect().width);
-      this.sesawElWidth = this.sesawEl.getBoundingClientRect().width
-      // console.log("this.sesawElWidth", this.sesawElWidth)
-      
+      // to keep teeter width 10
+      this.sesawElWidth = Math.ceil((this.sesawEl.getBoundingClientRect().width)/100)
+      console.log("this.sesawElWidth", this.sesawElWidth)
+      this.updateTeeterWidth(this.sesawElWidth)
     }
   },
   components: {
@@ -56,7 +59,10 @@ export default {
     },
   },
   methods: {
-    ...mapMutations([MUTATION_TYPES.SET_GAME_STATUS]),
+    ...mapMutations([MUTATION_TYPES.SET_GAME_STATUS, MUTATION_TYPES.TEETER_WIDTH]),
+    updateTeeterWidth(width) {
+      this.teeterWidth(width)
+    }
   },
   watch: {
     sesawAngle(newValue) {
@@ -89,7 +95,7 @@ export default {
 }
 #seasaw {
   height: 5px;
-  width: 100%;
+  width: 105%;
   background-color: red;
   transition: 500ms ease-in;
   position: relative;

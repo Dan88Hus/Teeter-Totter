@@ -1,5 +1,5 @@
 <template>
-  <div :class="'layout-h layout-center-center item ' + shape">
+  <div :class="'layout-h layout-center-center item ' + shape" id="itemId">
     <span class="weight">
       {{ item.weight + "kg" }}
     </span>
@@ -8,6 +8,8 @@
 
 <script>
 import { SHAPES } from "../../config";
+import { mapMutations } from "vuex";
+import MUTATION_TYPES from '../../store/mutation-types'; //OK
 
 export default {
   props: {
@@ -25,11 +27,21 @@ export default {
     },
   },
   computed: {
+    ...mapMutations([MUTATION_TYPES.TEETER_WIDTH]),
+
     shape() {
       return SHAPES[this.item.shape];
     },
+    updateTeeterWidth() {
+
+      // this.teeterWidth()
+      return true
+
+    },
   },
+
   mounted() {
+    // console.log("right items prop", this.rightItem)
     this.setItemColor();
 
     this.updateItemPosition(this.item.left);
@@ -41,7 +53,9 @@ export default {
   },
   methods: {
     updateItemPosition(left) {
+      // console.log("left", left)
       const { width } = this.$el.getBoundingClientRect();
+      // console.log("width", width)
       const start = this.rightItem ? 50 : 0;
 
       this.$el.style.left =
@@ -81,11 +95,10 @@ export default {
     border-radius: 3px;
     height: 50px !important;
     width: 80px !important;
-  
   }
   &.rectangle,
   &.circle {
-    width: 60px ;
+    width: 60px;
     height: 60px;
   }
 

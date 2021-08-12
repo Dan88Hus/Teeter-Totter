@@ -19,6 +19,9 @@ const mutations = {
   setBendingSpeed(state, speed) {
     state.bendingSpeed = speed;
   },
+  teeterWidth(state, width) {
+    state.teeterWidth = width;
+  },
   reset(state) {
     state.fallingItems = [];
     state.leftItems = [];
