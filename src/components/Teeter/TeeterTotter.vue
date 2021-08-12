@@ -40,8 +40,8 @@ export default {
     } else {
       // console.log("sesawEl exist", this.sesawEl.getBoundingClientRect().width);
       // to keep teeter width 10
-      this.sesawElWidth = Math.ceil((this.sesawEl.getBoundingClientRect().width)/100)
-      console.log("this.sesawElWidth", this.sesawElWidth)
+      this.sesawElWidth = Math.floor((this.sesawEl.getBoundingClientRect().width)/100)
+      // console.log("this.sesawElWidth", this.sesawElWidth)
       this.updateTeeterWidth(this.sesawElWidth)
     }
   },

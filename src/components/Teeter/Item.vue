@@ -1,5 +1,5 @@
 <template>
-  <div :class="'layout-h layout-center-center item ' + shape" id="itemId">
+  <div id="itemId" :class="'layout-h layout-center-center item ' + shape">
     <span class="weight">
       {{ item.weight + "kg" }}
     </span>
@@ -9,7 +9,7 @@
 <script>
 import { SHAPES } from "../../config";
 import { mapMutations } from "vuex";
-import MUTATION_TYPES from '../../store/mutation-types'; //OK
+import MUTATION_TYPES from "../../store/mutation-types"; //OK
 
 export default {
   props: {
@@ -34,9 +34,15 @@ export default {
     },
     updateTeeterWidth() {
 
-      // this.teeterWidth()
-      return true
+      const itemIdEl = document.getElementById("itemId");
+      if(itemIdEl){
+        // this finds falling item left, we need item left on teeter
+        const itemIdElLeft = Math.round((itemIdEl.getBoundingClientRect().left/100))
+        console.log("itemIdEl", itemIdElLeft);
 
+      }
+
+      return true;
     },
   },
 
@@ -50,6 +56,9 @@ export default {
     "item.left"(newVal) {
       this.updateItemPosition(newVal);
     },
+    updateTeeterWidth(newVal){
+      console.log("newVal",newVal)
+    }
   },
   methods: {
     updateItemPosition(left) {
