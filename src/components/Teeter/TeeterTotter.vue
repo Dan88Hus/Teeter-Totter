@@ -36,9 +36,9 @@ export default {
     if (!this.sesawEl) {
       console.log("document Element is not loaded yet");
     } else {
-      console.log("sesawEl exist", this.sesawEl.getBoundingClientRect().width);
+      // console.log("sesawEl exist", this.sesawEl.getBoundingClientRect().width);
       this.sesawElWidth = this.sesawEl.getBoundingClientRect().width
-      console.log("this.sesawElWidth", this.sesawElWidth)
+      // console.log("this.sesawElWidth", this.sesawElWidth)
       
     }
   },

@@ -5,6 +5,5 @@ export default {
   REMOVE_FALLING_ITEM: 'removeFallingItem',
   MOVE_ITEM: 'moveItem',
   ADD_ITEM: 'addItem',
-
   RESET: 'reset',
 };
