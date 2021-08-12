@@ -16,6 +16,9 @@ const mutations = {
   setDropSpeed(state, speed) {
     state.dropSpeed = speed;
   },
+  setBendingSpeed(state, speed) {
+    state.bendingSpeed = speed;
+  },
   reset(state) {
     state.fallingItems = [];
     state.leftItems = [];

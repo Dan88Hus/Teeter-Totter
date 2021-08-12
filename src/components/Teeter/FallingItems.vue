@@ -35,6 +35,7 @@ export default {
     this.sesaw = document.getElementById('seasaw');
     this.startFalling(); //OK
     this.calcBottomLimit(); //OK
+    // console.log("sesaw elment",this.sesaw)
   },
   beforeDestroy () { //OK
     window.removeEventListener('keydown', this.moveItem); //OK
@@ -52,7 +53,7 @@ export default {
     }
   },
   computed: {
-    ...mapState(['fallingItems', 'status', 'dropSpeed']), // OK
+    ...mapState(['fallingItems', 'status', 'dropSpeed','bendingSpeed']), // OK
     ...mapGetters(['sesawAngle']),
     fallingItem () {//OK
       return this.fallingItems[0]//OK
@@ -74,7 +75,7 @@ export default {
     ...mapMutations({
       move: MUTATION_TYPES.MOVE_ITEM,
     }), // OK
-    ...mapMutations([MUTATION_TYPES.SET_DROP_SPEED]),
+    ...mapMutations([MUTATION_TYPES.SET_DROP_SPEED, MUTATION_TYPES.SET_BENDING_SPEED]),
     nextItem () { //OK
       const fallingItem = this.fallingItemEl.getBoundingClientRect(); //OK
       const fallingWrapper = this.fallingWrapperEl.getBoundingClientRect(); //OK
@@ -83,6 +84,8 @@ export default {
       this.fallingItemTop = 0; //OK
 
       this.setDropSpeed(this.dropSpeed + 1); //OK
+      //increase bendingSpeed
+      this.setBendingSpeed(this.bendingSpeed + 1); //OK
       this.hitTheSeasaw(newLeft);
       this.startFalling(); ///OK
       this.calcBottomLimit(); //OK
