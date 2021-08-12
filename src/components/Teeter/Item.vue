@@ -33,13 +33,14 @@ export default {
       return SHAPES[this.item.shape];
     },
     updateTeeterWidth() {
-
       const itemIdEl = document.getElementById("itemId");
-      if(itemIdEl){
-        // this finds falling item left, we need item left on teeter
-        const itemIdElLeft = Math.round((itemIdEl.getBoundingClientRect().left/100))
-        console.log("itemIdEl", itemIdElLeft);
-
+      if (itemIdEl) {
+        // this finds falling item left, we need items' left on teeter
+        const itemIdElLeft = Math.round(
+          itemIdEl.getBoundingClientRect().left / 100
+        );
+        // console.log("itemIdEl", itemIdElLeft);
+      return itemIdElLeft;
       }
 
       return true;
@@ -56,9 +57,9 @@ export default {
     "item.left"(newVal) {
       this.updateItemPosition(newVal);
     },
-    updateTeeterWidth(newVal){
-      console.log("newVal",newVal)
-    }
+    updateTeeterWidth(newVal) {
+      console.log("newVal", newVal);
+    },
   },
   methods: {
     updateItemPosition(left) {
