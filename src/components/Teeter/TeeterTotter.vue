@@ -1,9 +1,6 @@
 <template>
   <div>
-    <div
-      id="seasaw"
-      :style="seasawStyle"
-    >
+    <div id="seasaw" :style="seasawStyle">
       <Item
         v-for="item in rightItems"
         :key="item.id"
@@ -11,48 +8,62 @@
         :rightItem="true"
       />
 
-      <Item
-        v-for="item in leftItems"
-        :key="item.id"
-        :item="item"
-      />
+      <Item v-for="item in leftItems" :key="item.id" :item="item" />
     </div>
     <div class="pivot">
-      <span class="angle">
-      </span>
+      <span class="angle"> </span>
     </div>
+    <!-- <pre>Tetter width: {{seasawWrapperEl}}</pre> -->
   </div>
 </template>
 
 <script>
-import { mapState, mapGetters, mapMutations } from 'vuex';
+import { mapState, mapGetters, mapMutations } from "vuex";
 import Item from "./Item";
-import MUTATION_TYPES from '../../store/mutation-types';
+import MUTATION_TYPES from "../../store/mutation-types";
 
 export default {
+  data() {
+    return {
+      sesawEl: null,
+      sesawElWidth : 0,
+
+    };
+  },
+  mounted() {
+    // console.log("mounted");
+    this.sesawEl = document.getElementById("seasaw");
+    if (!this.sesawEl) {
+      console.log("document Element is not loaded yet");
+    } else {
+      console.log("sesawEl exist", this.sesawEl.getBoundingClientRect().width);
+      this.sesawElWidth = this.sesawEl.getBoundingClientRect().width
+      console.log("this.sesawElWidth", this.sesawElWidth)
+      
+    }
+  },
   components: {
     Item,
   },
   computed: {
-    ...mapState(['rightItems', 'leftItems']),
-    ...mapGetters(['sesawAngle']),
-    seasawStyle () {
+    ...mapState(["rightItems", "leftItems"]),
+    ...mapGetters(["sesawAngle"]),
+    seasawStyle() {
       return {
         transform: `rotate(${this.sesawAngle}deg)`,
-        transitionDuration: `${2500 / (Math.abs(this.sesawAngle) + 1)}ms`
-      }
-    }
+        transitionDuration: `${2500 / (Math.abs(this.sesawAngle) + 1)}ms`,
+      };
+    },
   },
   methods: {
     ...mapMutations([MUTATION_TYPES.SET_GAME_STATUS]),
   },
   watch: {
-    sesawAngle (newValue) {
-      if (Math.abs(newValue) > 30)
-        this.setGameStatus('end')
-    }
+    sesawAngle(newValue) {
+      if (Math.abs(newValue) > 30) this.setGameStatus("end");
+    },
   },
-}
+};
 </script>
  
 <style lang="scss" scoped>
